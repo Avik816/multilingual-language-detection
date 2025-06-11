@@ -57,10 +57,26 @@ This project uses [XLM-RoBERTa](https://huggingface.co/xlm-roberta-base), an ope
 | Model            | `xlm-roberta-base`                                |
 | Layers           | 12-layer Transformer + Dense Classification Head  |
 | Tokenizer        | HuggingFace `AutoTokenizer`                       |
-| Max Length       | 128 tokens                                        |
+| Max Length       | 100 tokens                                        |
 | Loss             | `SparseCategoricalCrossentropy(from_logits=True)` |
-| Optimizer        | Adam (LR: 1e-5)                                   |
+| Optimizer        | Adam (LR: 5e-5)                                   |
 | Metrics          | Accuracy, F1-score, Classification Report         |
+
+---
+
+## 🔧 Fine-Tuning Strategy
+
+The model used for training is `xlm-roberta-base`, a 12-layer multilingual Transformer. Instead of fine-tuning the entire model (which is resource-intensive), a **layer-freezing strategy** was applied to retain pre-trained knowledge while reducing overfitting.
+
+Only the **last 2 encoder layers and the classification head** were fine-tuned. All other layers remained frozen, including their internal variables and sublayers (e.g., attention, feedforward).
+
+| Component                        | Trainable | Description                                                   |
+|----------------------------------|-----------|---------------------------------------------------------------|
+| Encoder Layers 0 to 9           | ❌ No     | Frozen: parameters and internal mechanisms (multi-head attention, layer norm, etc.) were kept unchanged. |
+| Encoder Layers 10 to 11         | ✅ Yes    | Fine-tuned to adapt to the target task (language detection).  |
+| Classification Head (dense layer) | ✅ Yes  | Fully trainable: adapts the model to the number of language classes. |
+
+This approach improves training efficiency and preserves the core multilingual representations learned from massive pretraining on CommonCrawl data.
 
 ---
 
@@ -99,7 +115,7 @@ language-detection-transformers/
 ├── README.md                      # Project overview, instructions, and architecture
 ├── Language Detection.csv         # Primary dataset with 'Text' and 'Language' columns
 ├── extra datasets/                # Additional multilingual datasets for augmentation
-├── models/                  # Checkpoints and fully saved fine-tuned models
+├── models/                        # Checkpoints and fully saved fine-tuned models
 └── logs/                          # To save the training logs of the model during fine-tuning
 
 ```
