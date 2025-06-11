@@ -1,6 +1,3 @@
-polars
-seaborn
-matplotlib
-scikit-learn
-tensorflow
-transformers
+version https://git-lfs.github.com/spec/v1
+oid sha256:770f272b9e65a790f3e8e0e0c09a5ed4d04b269608b838358daa5266871a0a0d
+size 69
