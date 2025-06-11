@@ -91,8 +91,8 @@ See [`requirements.txt`](./requirements.txt)
 1. **Clone and Install**:
 
     ```bash
-    git clone https://github.com/Avik816/multilinguinal-language-detection.git
-    cd multilinguinal-language-detection
+    git clone https://github.com/Avik816/multilingual-text-detection.git
+    cd multilingual-text-detection
     pip install -r requirements.txt
     ```
 
