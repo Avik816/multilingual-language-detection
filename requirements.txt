@@ -1,0 +1,6 @@
+polars
+seaborn
+matplotlib
+scikit-learn
+tensorflow
+transformers
