@@ -1,6 +1,6 @@
 # 🌍 Multilingual Language Detection using XLM-RoBERTa
 
-This project aims to build a multilingual text classifier that detects the **language of a given sentence**. Leveraging the power of **XLM-RoBERTa**, an open-source transformer model trained on 100 languages, this solution provides robust and accurate results across diverse linguistic inputs.
+This project aims to fine-tune an open-source transformer based model to build a multilingual text detction pipeline that detects the **language of a given sentence**. Leveraging the power of **XLM-RoBERTa**, an open-source transformer model trained on 100 languages, this solution provides robust and accurate results across diverse linguistic inputs.
 
 ## 🔓 Open Source Foundation
 
